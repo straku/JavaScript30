@@ -2,8 +2,7 @@ function getKeyedElements(selector) {
   const audioElements = Array.from(document.querySelectorAll(selector));
   let result = {};
   for (const element of audioElements) {
-    const key = element.getAttribute('data-key');
-    result[key] = element;
+    result[element.dataset.key] = element;
   }
   return result;
 }
