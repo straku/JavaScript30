@@ -112,10 +112,12 @@
 
       // 7. sort Exercise
       // Sort the people alphabetically by last name
-      function getLastName(person) {
-        return person.split(', ')[0];
-      }
-      console.table(people.sort((a, b) => getLastName(a) - getLastName(b)));
+      console.table(
+        people
+          .map(person => ({ value: person, sortBy: person.split(', ') }))
+          .sort((a, b) => (a.sortBy < b.sortBy ? -1 : 1))
+          .map(person => person.value)
+      );
 
       // 8. Reduce Exercise
       // Sum up the instances of each of these
